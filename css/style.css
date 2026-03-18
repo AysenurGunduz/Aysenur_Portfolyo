@@ -259,7 +259,7 @@ p {
 
 .greeting {
     font-size: 1.2rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-weight: 500;
     display: block;
     margin-bottom: 0.5rem;
@@ -275,7 +275,7 @@ p {
 
 .sub-title {
     font-size: 2rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
     font-weight: 500;
 }
@@ -284,6 +284,7 @@ p {
     font-size: 1.1rem;
     max-width: 500px;
     margin-bottom: 2rem;
+    color: var(--text-primary);
 }
 
 .cta-buttons {
@@ -373,6 +374,26 @@ p {
 @keyframes pulse {
     0% { transform: scale(0.95) translate(0, 0); opacity: 0.2; }
     100% { transform: scale(1.05) translate(20px, 10px); opacity: 0.4; }
+}
+
+/* Yüzen İkonlar (Animasyonlu) */
+.floating-icon {
+    position: absolute;
+    z-index: 5;
+    filter: drop-shadow(0 0 15px var(--accent-light));
+}
+
+.floating-rocket {
+    top: 5%;
+    right: 5%;
+    font-size: 4rem;
+    color: var(--accent-color);
+    animation: float-rocket 3s ease-in-out infinite alternate;
+}
+
+@keyframes float-rocket {
+    0% { transform: translateY(0) rotate(-10deg); }
+    100% { transform: translateY(-20px) rotate(10deg); }
 }
 
 /* ===== CV Download Margin ===== */
@@ -531,7 +552,7 @@ p {
 .project-image-box {
     width: 100%;
     height: 200px;
-    background: #ffffff; /* Beyaz arkaplan eklendi */
+    background: transparent; /* Removed solid white background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -545,6 +566,7 @@ p {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: center; /* Ensures the image is strictly centered */
     padding: 1rem; /* Resimlerin kenarlara çok yapışmaması için boşluk */
     transition: var(--transition);
 }
@@ -851,4 +873,47 @@ footer {
         text-align: center;
         gap: 1rem;
     }
+}
+
+/* ===== Scroll to Top Rocket ===== */
+.scroll-to-top {
+    position: fixed;
+    bottom: -100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--accent-light);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+.scroll-to-top.show {
+    bottom: 30px;
+    opacity: 1;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: var(--accent-hover);
+    box-shadow: 0 6px 20px var(--accent-light), 0 0 15px rgba(251, 191, 36, 0.6);
+}
+
+.scroll-to-top.launch {
+    animation: launch-rocket 1.5s ease-in forwards;
+}
+
+@keyframes launch-rocket {
+    0% { transform: translateY(0) scale(1.1); }
+    20% { transform: translateY(10px) scale(1.1); }
+    100% { transform: translateY(-1000px) scale(1.1); opacity: 0; }
 }

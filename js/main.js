@@ -81,6 +81,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Scroll to Top Rocket Logic
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+                scrollToTopBtn.classList.remove('launch'); // Reset launch animation if hidden
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            scrollToTopBtn.classList.add('launch');
+            
+            // Wait for rocket animation before scrolling up
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 300);
+            
+            // Animasyon bittikten sonra butonu eski haline getir
+            setTimeout(() => {
+                scrollToTopBtn.classList.remove('launch');
+            }, 1500);
+        });
+    }
+
 });
 
 // Global functions for Certificate Modal
