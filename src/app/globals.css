@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --color-cosmic-950: #050810;
+  --color-cosmic-900: #0a0e1a;
+  --color-cosmic-800: #111827;
+  --color-cosmic-700: #1e293b;
+  --color-cosmic-600: #334155;
+
+  --color-nebula-500: #06b6d4;
+  --color-nebula-400: #22d3ee;
+  --color-nebula-300: #67e8f9;
+
+  --color-aurora-600: #7c3aed;
+  --color-aurora-500: #8b5cf6;
+  --color-aurora-400: #a78bfa;
+
+  --color-starlight: #f0f9ff;
+  --color-stardust: #94a3b8;
+
+  --color-light-bg: #f8fafc;
+  --color-light-card: #ffffff;
+  --color-light-text: #0f172a;
+  --color-light-muted: #64748b;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.6s ease-out forwards;
+  --animate-fade-in: fade-in 0.8s ease-out forwards;
+  --animate-orbit: orbit 20s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; filter: blur(60px); }
+  50% { opacity: 0.7; filter: blur(80px); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ===== BASE ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cosmic-950);
+  color: var(--color-starlight);
+  overflow-x: hidden;
+}
+
+/* Light theme */
+body.light-theme {
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+  
+  --color-starlight: var(--color-light-text); /* #0f172a - dark slate */
+  --color-stardust: var(--color-light-muted);   /* #64748b - muted slate */
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cosmic-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-nebula-500);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-nebula-400);
+}
+
+body.light-theme ::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: var(--color-nebula-500);
+  color: var(--color-cosmic-950);
+}
+
+/* ===== GLASS CARD ===== */
+.glass-card {
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  border-radius: 1.25rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
+  transform: translateY(-4px);
+}
+
+body.light-theme .glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .glass-card:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 12px 40px rgba(6, 182, 212, 0.12);
+}
+
+/* ===== NAVBAR & MENU ===== */
+.nav-scrolled {
+  background-color: rgba(5, 8, 16, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+}
+
+body.light-theme .nav-scrolled {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu-bg {
+  background-color: rgba(5, 8, 16, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+}
+
+body.light-theme .mobile-menu-bg {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== STARFIELD ===== */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+}
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-nebula-400), var(--color-aurora-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.light-theme .gradient-text {
+  background: linear-gradient(135deg, var(--color-nebula-500), var(--color-aurora-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== NEBULA BACKGROUND BLOBS ===== */
+.nebula-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+  animation: var(--animate-glow-pulse);
+}
+
+body.light-theme .nebula-blob {
+  opacity: 0.08;
+}
