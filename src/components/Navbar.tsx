@@ -9,6 +9,7 @@ const links = [
   { href: "#about", label: "Hakkımda" },
   { href: "#experience", label: "Deneyim" },
   { href: "#portfolio", label: "Portfolyo" },
+  { href: "#contact", label: "İletişim" },
 ];
 
 export default function Navbar() {

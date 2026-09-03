@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -19,6 +20,7 @@ export default function Home() {
         <AboutSection />
         <ExperienceSection />
         <SkillsSection />
+        <ContactSection />
       </main>
       <Footer />
       <ScrollToTop />
